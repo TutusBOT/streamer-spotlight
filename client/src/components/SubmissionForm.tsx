@@ -47,6 +47,11 @@ const SubmissionForm = () => {
 					onClick={() => setOpenDropdown((prev) => !prev)}
 					type="button"
 					className="relative"
+					onBlur={(e) => {
+						if (!e.currentTarget.contains(e.relatedTarget)) {
+							setOpenDropdown(false);
+						}
+					}}
 				>
 					{platform}
 					{openDropdown && (
