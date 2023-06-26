@@ -11,7 +11,11 @@ const SubmissionForm = () => {
 
 	const handleSubmit = async () => {
 		try {
-			axios.post("/api/streamers", { name, description, platform });
+			axios.post(`${import.meta.env.VITE_API_URL}/streamers`, {
+				name,
+				description,
+				platform,
+			});
 		} catch (error) {
 			// handle error
 		}
