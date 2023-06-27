@@ -6,7 +6,8 @@ import Button from "./Button";
 const SubmissionForm = () => {
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
-	const [platform, setPlatform] = useState("Twitch");
+	const [platform, setPlatform] =
+		useState<(typeof STREAMING_PLATFORMS)[number]>("Twitch");
 	const [openDropdown, setOpenDropdown] = useState(false);
 
 	const handleSubmit = async () => {

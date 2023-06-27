@@ -4,4 +4,4 @@ export const STREAMING_PLATFORMS = [
 	"TikTok",
 	"Kick",
 	"Rumble",
-];
+] as const;

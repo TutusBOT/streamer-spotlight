@@ -13,7 +13,7 @@ const postStreamer = async (req: express.Request, res: express.Response) => {
 		const streamer = await Streamer.create(req.body);
 		return res.json(streamer);
 	} catch (error) {
-		return res.json(error).sendStatus(400);
+		return res.status(400).json(error);
 	}
 };
 
@@ -22,7 +22,7 @@ const getStreamers = async (req: express.Request, res: express.Response) => {
 		const streamers = await Streamer.find({}).lean();
 		return res.json(streamers);
 	} catch (error) {
-		return res.json(error).sendStatus(400);
+		return res.status(400).json(error);
 	}
 };
 
@@ -31,7 +31,7 @@ const getStreamerById = async (req: express.Request, res: express.Response) => {
 		const streamer = await Streamer.findById(req.params.id);
 		return res.json(streamer);
 	} catch (error) {
-		return res.json(error).sendStatus(400);
+		return res.status(400).json(error);
 	}
 };
 
@@ -49,24 +49,7 @@ const putVote = async (req: express.Request, res: express.Response) => {
 			{ upsert: true, new: true }
 		);
 		return res.json(currentStreamer);
-		// if (vote === "upvote") {
-		// 	const currentStreamer = await Streamer.findByIdAndUpdate(
-		// 		id,
-		// 		{ votes: streamer.votes + 1 },
-		// 		{ new: true, upsert: true }
-		// 	);
-		// 	return res.json(currentStreamer);
-		// }
-		// if (vote === "downvote") {
-		// 	const currentStreamer = await Streamer.findByIdAndUpdate(
-		// 		id,
-		// 		{ votes: streamer.votes - 1 },
-		// 		{ new: true, upsert: true }
-		// 	);
-		// 	return res.json(currentStreamer);
-		// }
-		// return res.json("");
 	} catch (error) {
-		return res.json(error).sendStatus(400);
+		return res.status(400).json(error);
 	}
 };
