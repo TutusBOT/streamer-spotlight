@@ -1,6 +1,6 @@
 import { streamer } from "../pages/Streamer";
 import { Link } from "react-router-dom";
-import VoteArrow from "./vote-arrow.svg";
+import VoteArrow from "../../public/vote-arrow.svg";
 
 interface streamerList {
 	streamers?: streamer[];
