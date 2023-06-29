@@ -2,9 +2,11 @@ import { useState } from "react";
 import { STREAMING_PLATFORMS } from "../constants";
 import axios from "axios";
 import Button from "./Button";
+import Error from "./Error";
 
 const SubmissionForm = () => {
 	const [name, setName] = useState("");
+	const [error, setError] = useState<null | string>(null);
 	const [description, setDescription] = useState("");
 	const [platform, setPlatform] =
 		useState<(typeof STREAMING_PLATFORMS)[number]>("Twitch");
@@ -18,9 +20,15 @@ const SubmissionForm = () => {
 				platform,
 			});
 		} catch (error) {
-			// handle error
+			if (axios.isAxiosError(error)) {
+				setError(error.message);
+			} else {
+				setError("Unable to submit streamer.");
+			}
 		}
 	};
+
+	if (error) return <Error message={error} />;
 
 	return (
 		<form
