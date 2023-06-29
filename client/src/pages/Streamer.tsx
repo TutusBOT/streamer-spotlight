@@ -5,14 +5,15 @@ import { STREAMING_PLATFORMS } from "../constants";
 import Button from "../components/Button";
 import z from "zod";
 
-const streamerSchema = z.object({
+export const streamerSchema = z.object({
+	_id: z.string(),
 	name: z.string(),
 	platform: z.enum(STREAMING_PLATFORMS),
 	description: z.string(),
 	votes: z.number().int(),
 });
 
-type streamer = z.infer<typeof streamerSchema>;
+export type streamer = z.infer<typeof streamerSchema>;
 
 const Streamer = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
