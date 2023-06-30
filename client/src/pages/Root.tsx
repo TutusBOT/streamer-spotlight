@@ -4,6 +4,7 @@ import SubmissionForm from "../components/SubmissionForm";
 import axios from "axios";
 import z from "zod";
 import { streamerSchema } from "./Streamer";
+import Error from "../components/Error";
 
 const streamersSchema = z.array(streamerSchema);
 
@@ -11,13 +12,19 @@ type streamers = z.infer<typeof streamersSchema>;
 
 const Root = () => {
 	const [streamers, setStreamers] = useState<undefined | streamers>();
+	const [error, setError] = useState<null | string>();
 
 	useEffect(() => {
-		axios.get(`${import.meta.env.VITE_API_URL}/streamers`).then((res) => {
-			const parsedStreamers = streamersSchema.parse(res.data);
-			setStreamers(parsedStreamers);
-		});
+		axios
+			.get(`${import.meta.env.VITE_API_URL}/streamers`)
+			.then((res) => {
+				const parsedStreamers = streamersSchema.parse(res.data);
+				setStreamers(parsedStreamers);
+			})
+			.catch((error) => setError(error.message));
 	}, []);
+
+	if (error) return <Error message={error} />;
 
 	return (
 		<div className="min-h-screen py-16 bg-gray-900">
