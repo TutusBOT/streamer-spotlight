@@ -36,7 +36,7 @@ const Streamer = () => {
 		vote: "upvote" | "downvote";
 	}>(null);
 	const id = searchParams.get("id");
-	if (!id) return setError("Please provide a streamer ID.");
+	if (!id) return <Error message="Please provide a streamer ID." />;
 
 	const handleVote = async (vote: "upvote" | "downvote") => {
 		let voteCount = 1;
