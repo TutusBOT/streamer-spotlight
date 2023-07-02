@@ -34,7 +34,7 @@ const Root = () => {
 			</div>
 			<div className="w-full max-w-6xl h-[1px] mx-auto mt-16 bg-purple-600"></div>
 			<div className="flex flex-col items-center justify-center gap-4 px-4 mt-16 sm:px-8">
-				<h3 className="text-2xl text-white">Streamers</h3>
+				<h2 className="text-2xl text-white">Streamers</h2>
 				<StreamerList streamers={streamers} setStreamers={setStreamers} />
 			</div>
 		</div>
