@@ -89,7 +89,7 @@ const Streamer = () => {
 	if (error) return <Error message={error} />;
 
 	return (
-		<div className="grid min-h-screen text-white bg-gray-900 place-content-center">
+		<div className="grid min-h-screen px-2 text-white bg-gray-900 place-content-center">
 			<Navbar />
 			{streamer != null && (
 				<div className="flex flex-col gap-4 p-4 sm:p-8 rounded-xl w-fit bg-gray-950 sm:min-w-[500px]">
