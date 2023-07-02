@@ -73,6 +73,7 @@ const SubmissionForm = () => {
 							className={`w-4 h-4 mt-1 transition-transform ${
 								openDropdown && "rotate-180"
 							}`}
+							alt="arrow"
 						/>
 					</div>
 					<ul
