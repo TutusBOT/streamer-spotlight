@@ -5,3 +5,5 @@ export const STREAMING_PLATFORMS = [
 	"Kick",
 	"Rumble",
 ] as const;
+
+export const VOTES_LOCAL_STORAGE_KEY = "streamer-votes";

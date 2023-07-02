@@ -37,12 +37,12 @@ const getStreamerById = async (req: express.Request, res: express.Response) => {
 
 const putVote = async (req: express.Request, res: express.Response) => {
 	try {
-		const { vote } = req.body;
+		const { vote, count } = req.body;
 		const id = req.params.id;
 		const streamer = await Streamer.findById(id);
 		let currentVotes = streamer.votes;
-		if (vote === "upvote") currentVotes += 1;
-		if (vote === "downvote") currentVotes -= 1;
+		if (vote === "upvote") currentVotes += count || 1;
+		if (vote === "downvote") currentVotes -= count || 1;
 		const currentStreamer = await Streamer.findByIdAndUpdate(
 			id,
 			{ votes: currentVotes },
